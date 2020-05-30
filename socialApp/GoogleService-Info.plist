@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>437323660222-7ubgf5epnob19opv51qdm1fn9teojqif.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.437323660222-7ubgf5epnob19opv51qdm1fn9teojqif</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBjGw7w192u2VcAs3OdqL_gU6l4cNVKpl8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>437323660222</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>MOHAMED.socialApp</string>
+	<key>PROJECT_ID</key>
+	<string>xcodeproject-3c292</string>
+	<key>STORAGE_BUCKET</key>
+	<string>xcodeproject-3c292.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:437323660222:ios:c08217f1c111a7143857ef</string>
+	<key>DATABASE_URL</key>
+	<string>https://xcodeproject-3c292.firebaseio.com</string>
+</dict>
+</plist>
