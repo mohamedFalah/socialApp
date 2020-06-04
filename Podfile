@@ -11,7 +11,6 @@ target 'socialApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-  pod 'MaterialComponents'
-  pod 'MaterialComponents/TextControls+OutlinedTextFields'
-
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
 end
