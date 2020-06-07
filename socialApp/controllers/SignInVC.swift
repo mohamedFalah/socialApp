@@ -13,7 +13,9 @@ import Firebase
 
 class SignInVC: UIViewController {
 
-    @IBOutlet weak var EmailTextField: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +76,59 @@ class SignInVC: UIViewController {
         }
     }
     
+    /*
+     email and password authintication with firebase
+     
+     Not all scenarios written.
+     **/
 
-
+    @IBAction func SignInTapped(_ sender: Any) {
+        
+//        if let email = EmailTextField.text, let password = passwordTextField.text {
+//            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+//                if error == nil {
+//                    print("MSGAuth: user authinticated with email")
+//                } else {
+//                    Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+//                        if error != nil {
+//                            print("MSGAuth: unable to authinticate email with firebase")
+//                        } else {
+//                            print("MSGAuth: successfully authinticated email with firebase")
+//                        }
+//                    }
+//                }
+//
+//            }
+//        }
+        
+        //take the text from text field with non empty
+        if let email = emailTextField.text, let password = passwordTextField.text{
+            
+            //call firebase signin with email and password
+            Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+                //if the no error
+                guard error == nil else {
+                    //else create new user
+                    Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                        //if error
+                        guard error == nil else {
+                        // print no authintication
+                            print("MSGAuth: unable to authinticate email with Firebase")
+                            return
+                        }
+                        //else the email is authinticated
+                        print("MSGAuth: successfully authinticated email with Firebase")
+                    }
+                  return
+                }
+                //authinticated
+                print("MSGAuth: user authinticated with email")
+            }
+            
+        }
+        
+        
+    }
+    
 }
 
