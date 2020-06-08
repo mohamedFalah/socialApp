@@ -10,6 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
 
@@ -21,7 +22,15 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
+    }
+    
+    //method to perform the segue
+    override func viewDidAppear(_ animated: Bool) {
+        //if there is key saved in the keychain auto sign in autmatically.
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID){
+            //got to feed screen
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
     }
     
     
@@ -72,6 +81,10 @@ class SignInVC: UIViewController {
             else {
                 //successful auth print it
                 print("MSGAuth: successfully authinticated with firebase")
+                //run the funtion completeSignIn to save the key to the kychain
+                if let user = user {
+                    self.completeSignIn(userId: user.user.uid)
+                }
             }
         }
     }
@@ -118,16 +131,33 @@ class SignInVC: UIViewController {
                         }
                         //else the email is authinticated
                         print("MSGAuth: successfully authinticated email with Firebase")
+                        //run the funtion completeSignIn to save the key to the kychain
+                        if let user = user {
+                            self.completeSignIn(userId: user.user.uid)
+                        }
                     }
                   return
                 }
                 //authinticated
                 print("MSGAuth: user authinticated with email")
+                //run the funtion completeSignIn to save the key to the kychain
+                if let user = user {
+                    self.completeSignIn(userId: user.user.uid)
+                }
             }
             
         }
-        
-        
+    }
+    
+    /*
+     function to save the key of the user id to keychain to perform auto sign in
+     **/
+    func completeSignIn (userId: String) {
+        //save the key to the keychain
+        let keychainResult = KeychainWrapper.standard.set(userId, forKey: KEY_UID)
+        print("MSGAuth: data saved to keychain \(keychainResult)")
+        //got to the feed screen
+        performSegue(withIdentifier: "goToFeed", sender: nil)
     }
     
 }

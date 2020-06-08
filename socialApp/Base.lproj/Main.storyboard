@@ -91,14 +91,61 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jp3-td-5hd"/>
                     <connections>
                         <outlet property="emailTextField" destination="JAa-KD-fFw" id="NCW-nK-UgZ"/>
                         <outlet property="passwordTextField" destination="f95-gn-9we" id="uE9-V4-XuS"/>
+                        <segue destination="1A6-nY-dPI" kind="presentation" identifier="goToFeed" modalPresentationStyle="fullScreen" id="EP8-X4-H5w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
+            <point key="canvasLocation" x="193" y="102"/>
+        </scene>
+        <!--FeedVC-->
+        <scene sceneID="fkC-qp-RNv">
+            <objects>
+                <viewController id="1A6-nY-dPI" customClass="FeedVC" customModule="socialApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CPE-mf-ggI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed UI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqy-Sc-NCA">
+                                <rect key="frame" x="147.5" y="426.5" width="119" height="43"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yks-dV-WLM">
+                                <rect key="frame" x="149" y="801" width="117" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="tac-9P-MC7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="1A6-nY-dPI" eventType="touchUpInside" id="3xZ-KS-Fzl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uqy-Sc-NCA" firstAttribute="centerY" secondItem="CPE-mf-ggI" secondAttribute="centerY" id="1NK-sS-hau"/>
+                            <constraint firstItem="Yks-dV-WLM" firstAttribute="bottom" secondItem="6ht-e3-DnU" secondAttribute="bottom" id="RPf-ex-pB2"/>
+                            <constraint firstItem="6ht-e3-DnU" firstAttribute="trailing" secondItem="Yks-dV-WLM" secondAttribute="trailing" constant="148" id="eYX-eb-eDH"/>
+                            <constraint firstItem="uqy-Sc-NCA" firstAttribute="centerX" secondItem="CPE-mf-ggI" secondAttribute="centerX" id="em2-e9-l9C"/>
+                            <constraint firstItem="Yks-dV-WLM" firstAttribute="leading" secondItem="6ht-e3-DnU" secondAttribute="leading" constant="149" id="lKq-8O-JmB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6ht-e3-DnU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1bm-SS-hiR"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToSignIn" modalPresentationStyle="fullScreen" id="g0s-FF-z9K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chq-m5-ZRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951" y="102"/>
         </scene>
     </scenes>
     <resources>
