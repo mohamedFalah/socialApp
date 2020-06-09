@@ -110,31 +110,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed UI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqy-Sc-NCA">
-                                <rect key="frame" x="147.5" y="426.5" width="119" height="43"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yks-dV-WLM">
-                                <rect key="frame" x="149" y="801" width="117" height="61"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KrM-ar-RoN" customClass="FancyView" customModule="socialApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="93" translatesAutoresizingMaskIntoConstraints="NO" id="3jV-zl-E00">
+                                        <rect key="frame" x="28" y="52" width="358" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4V-N0-zI6">
+                                                <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="lKB-Tx-fQo"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" image="logout"/>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJY-1b-qHM">
+                                                <rect key="frame" x="131" y="0.0" width="96" height="38"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                                <color key="textColor" white="1" alpha="0.96999999999999997" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mct-rv-m6X">
+                                                <rect key="frame" x="320" y="0.0" width="38" height="38"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="38" id="Sby-TE-huu"/>
+                                                    <constraint firstAttribute="height" constant="38" id="W9p-EW-ahC"/>
+                                                </constraints>
+                                                <state key="normal" image="user"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.01176470588" green="0.66274509800000003" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="tac-9P-MC7"/>
+                                    <constraint firstItem="3jV-zl-E00" firstAttribute="top" secondItem="KrM-ar-RoN" secondAttribute="top" constant="52" id="3wy-3M-5Mc"/>
+                                    <constraint firstItem="3jV-zl-E00" firstAttribute="leading" secondItem="KrM-ar-RoN" secondAttribute="leading" constant="28" id="FoX-4H-GAd"/>
+                                    <constraint firstAttribute="trailing" secondItem="3jV-zl-E00" secondAttribute="trailing" constant="28" id="ckw-xA-d54"/>
+                                    <constraint firstAttribute="bottom" secondItem="3jV-zl-E00" secondAttribute="bottom" constant="35" id="f5e-IO-Gn7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutButtonTapped:" destination="1A6-nY-dPI" eventType="touchUpInside" id="3xZ-KS-Fzl"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="uqy-Sc-NCA" firstAttribute="centerY" secondItem="CPE-mf-ggI" secondAttribute="centerY" id="1NK-sS-hau"/>
-                            <constraint firstItem="Yks-dV-WLM" firstAttribute="bottom" secondItem="6ht-e3-DnU" secondAttribute="bottom" id="RPf-ex-pB2"/>
-                            <constraint firstItem="6ht-e3-DnU" firstAttribute="trailing" secondItem="Yks-dV-WLM" secondAttribute="trailing" constant="148" id="eYX-eb-eDH"/>
-                            <constraint firstItem="uqy-Sc-NCA" firstAttribute="centerX" secondItem="CPE-mf-ggI" secondAttribute="centerX" id="em2-e9-l9C"/>
-                            <constraint firstItem="Yks-dV-WLM" firstAttribute="leading" secondItem="6ht-e3-DnU" secondAttribute="leading" constant="149" id="lKq-8O-JmB"/>
+                            <constraint firstItem="KrM-ar-RoN" firstAttribute="leading" secondItem="6ht-e3-DnU" secondAttribute="leading" id="1gQ-ih-tyG"/>
+                            <constraint firstItem="KrM-ar-RoN" firstAttribute="top" secondItem="CPE-mf-ggI" secondAttribute="top" id="D9g-08-2Xe"/>
+                            <constraint firstItem="KrM-ar-RoN" firstAttribute="trailing" secondItem="6ht-e3-DnU" secondAttribute="trailing" id="rEA-hZ-MGO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6ht-e3-DnU"/>
                     </view>
@@ -145,10 +164,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chq-m5-ZRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="102"/>
+            <point key="canvasLocation" x="937.68115942028987" y="101.78571428571428"/>
         </scene>
     </scenes>
     <resources>
         <image name="facbooklogin" width="835" height="161"/>
+        <image name="logout" width="512" height="512"/>
+        <image name="user" width="512" height="512"/>
     </resources>
 </document>
