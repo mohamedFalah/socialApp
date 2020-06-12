@@ -21,6 +21,8 @@
 		D55C1B6D2485B224008468DD /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C1B6C2485B223008468DD /* FancyField.swift */; };
 		D55C1B6F2485B4DE008468DD /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C1B6E2485B4DE008468DD /* FancyButton.swift */; };
 		D5A0D85F248DF150009CF504 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A0D85E248DF150009CF504 /* FeedVC.swift */; };
+		D5AC4DB924932EF900662429 /* postCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AC4DB824932EF900662429 /* postCell.swift */; };
+		D5F16C26249342AC00BA82EC /* ImageViewCustomization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F16C25249342AC00BA82EC /* ImageViewCustomization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		D55C1B6C2485B223008468DD /* FancyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
 		D55C1B6E2485B4DE008468DD /* FancyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		D5A0D85E248DF150009CF504 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		D5AC4DB824932EF900662429 /* postCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postCell.swift; sourceTree = "<group>"; };
+		D5F16C25249342AC00BA82EC /* ImageViewCustomization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCustomization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				D55C1B6A2485AE87008468DD /* RoungBtn.swift */,
 				D55C1B6C2485B223008468DD /* FancyField.swift */,
 				D55C1B6E2485B4DE008468DD /* FancyButton.swift */,
+				D5AC4DB824932EF900662429 /* postCell.swift */,
+				D5F16C25249342AC00BA82EC /* ImageViewCustomization.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5A0D85F248DF150009CF504 /* FeedVC.swift in Sources */,
+				D5F16C26249342AC00BA82EC /* ImageViewCustomization.swift in Sources */,
 				D5347C2A2481C34E00F55507 /* SignInVC.swift in Sources */,
 				D55C1B6F2485B4DE008468DD /* FancyButton.swift in Sources */,
 				D5347C262481C34E00F55507 /* AppDelegate.swift in Sources */,
@@ -288,6 +295,7 @@
 				D55C1B6B2485AE87008468DD /* RoungBtn.swift in Sources */,
 				D55C1B6D2485B224008468DD /* FancyField.swift in Sources */,
 				D5347C282481C34E00F55507 /* SceneDelegate.swift in Sources */,
+				D5AC4DB924932EF900662429 /* postCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
