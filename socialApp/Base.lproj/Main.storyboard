@@ -121,11 +121,15 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvj-Bb-orr">
                                         <rect key="frame" x="22" y="58" width="42" height="42"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="CMu-fx-fgS"/>
                                             <constraint firstAttribute="width" constant="42" id="qLF-15-4qr"/>
                                         </constraints>
                                         <state key="normal" image="logout"/>
+                                        <connections>
+                                            <action selector="logoutButtonTapped:" destination="1A6-nY-dPI" eventType="touchUpInside" id="WeJ-zG-vR1"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XE0-12-sfw">
                                         <rect key="frame" x="352" y="58" width="42" height="42"/>
@@ -167,8 +171,8 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O49-G8-pKI" customClass="FancyButton" customModule="socialApp" customModuleProvider="target">
-                                        <rect key="frame" x="340" y="0.0" width="43" height="77"/>
-                                        <state key="normal" image="upload"/>
+                                        <rect key="frame" x="340" y="8" width="43" height="61"/>
+                                        <state key="normal" image="upload-1"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -177,9 +181,9 @@
                                     <constraint firstItem="Yn8-ro-J3X" firstAttribute="leading" secondItem="vcj-sd-3IB" secondAttribute="leading" id="Fjm-zD-Qhb"/>
                                     <constraint firstAttribute="bottom" secondItem="qLn-B2-cn1" secondAttribute="bottom" id="L7c-Xk-7Yz"/>
                                     <constraint firstItem="Yn8-ro-J3X" firstAttribute="top" secondItem="vcj-sd-3IB" secondAttribute="top" id="LyE-OM-S4p"/>
-                                    <constraint firstItem="O49-G8-pKI" firstAttribute="top" secondItem="vcj-sd-3IB" secondAttribute="top" id="N2o-ih-Sqn"/>
+                                    <constraint firstItem="O49-G8-pKI" firstAttribute="top" secondItem="vcj-sd-3IB" secondAttribute="top" constant="8" id="N2o-ih-Sqn"/>
                                     <constraint firstItem="qLn-B2-cn1" firstAttribute="top" secondItem="vcj-sd-3IB" secondAttribute="top" id="T53-aC-rHf"/>
-                                    <constraint firstAttribute="bottom" secondItem="O49-G8-pKI" secondAttribute="bottom" id="US8-2a-k2b"/>
+                                    <constraint firstAttribute="bottom" secondItem="O49-G8-pKI" secondAttribute="bottom" constant="8" id="US8-2a-k2b"/>
                                     <constraint firstItem="qLn-B2-cn1" firstAttribute="leading" secondItem="Yn8-ro-J3X" secondAttribute="trailing" constant="2" id="bdl-as-pf0"/>
                                     <constraint firstAttribute="trailing" secondItem="O49-G8-pKI" secondAttribute="trailing" constant="1" id="liK-ix-vsG"/>
                                     <constraint firstAttribute="bottom" secondItem="Yn8-ro-J3X" secondAttribute="bottom" id="sP1-7p-mJe"/>
@@ -204,7 +208,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="384" height="380"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me" translatesAutoresizingMaskIntoConstraints="NO" id="yT3-Xh-Iti" customClass="ImageViewCustomization" customModule="socialApp" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="86" width="390" height="214"/>
+                                                            <rect key="frame" x="8" y="86" width="368" height="214"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="214" id="Jp0-SY-Ycm"/>
                                                                 <constraint firstAttribute="width" constant="390" id="RDf-B6-KMx"/>
@@ -350,7 +354,7 @@
         <image name="heart" width="512" height="512"/>
         <image name="logout" width="512" height="512"/>
         <image name="me" width="954" height="752"/>
-        <image name="upload" width="512" height="512"/>
+        <image name="upload-1" width="512" height="512"/>
         <image name="user" width="512" height="512"/>
     </resources>
 </document>

@@ -83,7 +83,8 @@ class SignInVC: UIViewController {
                 print("MSGAuth: successfully authinticated with firebase")
                 //run the funtion completeSignIn to save the key to the kychain
                 if let user = user {
-                    self.completeSignIn(userId: user.user.uid)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(userId: user.user.uid, userData: userData)
                 }
             }
         }
@@ -133,7 +134,8 @@ class SignInVC: UIViewController {
                         print("MSGAuth: successfully authinticated email with Firebase")
                         //run the funtion completeSignIn to save the key to the kychain
                         if let user = user {
-                            self.completeSignIn(userId: user.user.uid)
+                            let userData = ["provider": user.user.providerID]
+                            self.completeSignIn(userId: user.user.uid, userData: userData)
                         }
                     }
                   return
@@ -142,7 +144,8 @@ class SignInVC: UIViewController {
                 print("MSGAuth: user authinticated with email")
                 //run the funtion completeSignIn to save the key to the kychain
                 if let user = user {
-                    self.completeSignIn(userId: user.user.uid)
+                    let userData = ["provider": user.user.providerID]
+                    self.completeSignIn(userId: user.user.uid, userData: userData)
                 }
             }
             
@@ -152,7 +155,10 @@ class SignInVC: UIViewController {
     /*
      function to save the key of the user id to keychain to perform auto sign in
      **/
-    func completeSignIn (userId: String) {
+    func completeSignIn (userId: String, userData: Dictionary<String, String>) {
+        //store user info to database
+        DataService.dataService.createUsers(uid: userId, userData: userData)
+        
         //save the key to the keychain
         let keychainResult = KeychainWrapper.standard.set(userId, forKey: KEY_UID)
         print("MSGAuth: data saved to keychain \(keychainResult)")
