@@ -15,12 +15,30 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
 
+    var posts = [Post]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
+        //create listener on posts childs
+        ///.value -> Any data changes at a location or, recursively, at any child node.  FIRDataEventTypeValue
+        DataService.dataService.REF_POSTS.observe(.value) { (snapshot) in
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshot {
+                    print("FIR: \(snap)")
+                    if let postDict = snap.value as? Dictionary<String, AnyObject> {
+                        let id = snap.key
+                        let post = Post(id: id, postData: postDict)
+                        self.posts.append(post)
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }
     }
     
 
@@ -44,7 +62,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
