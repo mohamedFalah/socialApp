@@ -18,6 +18,8 @@ class postCell: UITableViewCell {
     @IBOutlet weak var comments: UILabel!
     @IBOutlet weak var liked: UIButton!
     
+    var post: Post!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +29,18 @@ class postCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    /*
+     function to initialize the cells with content
+     */
+    func configureCell (post: Post) {
+        self.post = post
+        self.caption.text = post.caption
+        //self.postImage = post.imageUrl
+        self.likes.text = "\(post.likes)"
+        self.comments.text = "\(post.comments)"
+        
     }
 
 }

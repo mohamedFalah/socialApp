@@ -39,6 +39,10 @@ class Post {
         self._comments = comments
     }
     
+    /*
+     initilizer to create instance of post as dictionary id and other info
+     */
+    
     init(id: String, postData: Dictionary<String, AnyObject>){
         self._id = id
         

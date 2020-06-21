@@ -11,17 +11,28 @@ import Firebase
 import SwiftKeychainWrapper
 
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var addImageButton: ImageViewCustomization!
+    
+    //array to store the posts
     var posts = [Post]()
+    
+    //image picker
+    var imagePicker: UIImagePickerController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //initialize the image picer
+        imagePicker = UIImagePickerController()
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
         
         
         //create listener on posts childs
@@ -30,6 +41,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
                     print("FIR: \(snap)")
+                    //dictionary the take the posts from database to store in the local variable
+                    // it has string id and postdata -> caption image and likes and comments
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
                         let id = snap.key
                         let post = Post(id: id, postData: postDict)
@@ -37,6 +50,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
+            //reload the tableview to show the data
             self.tableView.reloadData()
         }
     }
@@ -66,8 +80,40 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "PostCell") as! postCell
+        let post = posts[indexPath.row]
         
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? postCell {
+            cell.configureCell(post: post)
+            return cell
+        }else {
+            return postCell()
+        }
+    }
+    
+    
+    /*
+     image picker function
+     when user select an image
+     */
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:[UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            print("PICKER: added")
+            //view the selected image in the imageview
+            addImageButton.image = image
+        }else {
+            print("PICKER: error")
+        }
+        //getout of the picker
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    /*
+     show picker if clicked on imageview
+     */
+    @IBAction func addImageTapped(_ sender: Any) {
+        present(imagePicker, animated: true, completion: nil)
     }
     
     

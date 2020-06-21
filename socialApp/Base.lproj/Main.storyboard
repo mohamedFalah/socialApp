@@ -154,13 +154,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcj-sd-3IB" customClass="FancyView" customModule="socialApp" customModuleProvider="target">
                                 <rect key="frame" x="15" y="144" width="384" height="77"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yn8-ro-J3X" customClass="ImageViewCustomization" customModule="socialApp" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yn8-ro-J3X" customClass="ImageViewCustomization" customModule="socialApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="77" id="Pbv-fN-4as"/>
                                             <constraint firstAttribute="height" constant="77" id="wQQ-ap-GrV"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="IqX-az-A9i" appends="YES" id="BtR-yx-c06"/>
+                                        </connections>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qLn-B2-cn1">
                                         <rect key="frame" x="79" y="0.0" width="260" height="77"/>
@@ -338,11 +342,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="1bm-SS-hiR"/>
                     <connections>
+                        <outlet property="addImageButton" destination="Yn8-ro-J3X" id="DGz-Np-N0A"/>
                         <outlet property="tableView" destination="oDp-YA-Xj6" id="2tG-pk-q63"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToSignIn" modalPresentationStyle="fullScreen" id="g0s-FF-z9K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chq-m5-ZRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="IqX-az-A9i">
+                    <connections>
+                        <action selector="addImageTapped:" destination="1A6-nY-dPI" id="3Bi-NK-BGr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="937.68115942028987" y="101.78571428571428"/>
         </scene>
