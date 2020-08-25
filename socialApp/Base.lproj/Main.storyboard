@@ -177,6 +177,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O49-G8-pKI" customClass="FancyButton" customModule="socialApp" customModuleProvider="target">
                                         <rect key="frame" x="340" y="8" width="43" height="61"/>
                                         <state key="normal" image="upload-1"/>
+                                        <connections>
+                                            <action selector="postBtnTapped:" destination="1A6-nY-dPI" eventType="touchUpInside" id="Pws-KK-yOe"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -343,6 +346,7 @@
                     <navigationItem key="navigationItem" id="1bm-SS-hiR"/>
                     <connections>
                         <outlet property="addImageButton" destination="Yn8-ro-J3X" id="DGz-Np-N0A"/>
+                        <outlet property="captionTextField" destination="qLn-B2-cn1" id="3RU-sf-DnU"/>
                         <outlet property="tableView" destination="oDp-YA-Xj6" id="2tG-pk-q63"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToSignIn" modalPresentationStyle="fullScreen" id="g0s-FF-z9K"/>
                     </connections>

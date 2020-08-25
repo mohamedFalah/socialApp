@@ -16,11 +16,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addImageButton: ImageViewCustomization!
     
+    @IBOutlet weak var captionTextField: UITextField!
+    
     //array to store the posts
     var posts = [Post]()
     
     //image picker
     var imagePicker: UIImagePickerController!
+    var imageSelected = false
     
     //image cache
     static var imgCache: NSCache<NSString, UIImage> = NSCache()
@@ -110,6 +113,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             print("PICKER: added")
             //view the selected image in the imageview
             addImageButton.image = image
+            imageSelected = true
         }else {
             print("PICKER: error")
         }
@@ -124,7 +128,38 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         present(imagePicker, animated: true, completion: nil)
     }
     
-    
+    //upload post 
+    @IBAction func postBtnTapped(_ sender: Any) {
+        guard let caption = captionTextField.text, caption != "" else {
+            print("POSTING: you must have a caption")
+            return
+        }
+        
+        guard let image = addImageButton.image, imageSelected == true else {
+            print("POSTING: image must be selected")
+            return
+        }
+        
+        if let imageData = image.jpegData(compressionQuality: 0.2) {
+            
+            let imageUId = NSUUID().uuidString
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            let uploadImage = DataService.dataService.REF_POST_IMAGES.child(imageUId)
+            uploadImage.putData(imageData, metadata: metadata) { (metadata, error) in
+                if error != nil {
+                    print("UPLOADING: error uplaoding the picture")
+                } else {
+                    print("UPLAODING: image uplaoded")
+                    uploadImage.downloadURL { (url, error) in
+                        let downloadUrl = url?.absoluteString
+                        print("IMAGEURL: \(String(describing: downloadUrl))")
+                        
+                     }
+                }
+            }
+        }
+    }
     
     /*
      function to sign out the user and delete the keys from keychian
