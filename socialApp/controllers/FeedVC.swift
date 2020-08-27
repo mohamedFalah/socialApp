@@ -154,11 +154,30 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     uploadImage.downloadURL { (url, error) in
                         let downloadUrl = url?.absoluteString
                         print("IMAGEURL: \(String(describing: downloadUrl))")
-                        
+                        self.postToFirebase(imageUrl: downloadUrl!)
                      }
                 }
             }
         }
+    }
+    
+    func postToFirebase(imageUrl: String) {
+        
+        let post: Dictionary<String, Any> = [
+            "caption": captionTextField.text!,
+            "imageUrl": imageUrl,
+            "comments": 0,
+            "likes": 0
+        ]
+       
+        //post to firebase
+        _ = DataService.dataService.REF_POSTS.childByAutoId().setValue(post)
+        
+        tableView.reloadData()
+        //empty fields
+        captionTextField.text = ""
+        imageSelected = false
+        addImageButton.image = UIImage(named: "camera-1")
     }
     
     /*
