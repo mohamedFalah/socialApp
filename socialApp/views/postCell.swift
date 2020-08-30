@@ -52,6 +52,15 @@ class postCell: UITableViewCell {
         self.likes.text = "\(post.likes)"
         self.comments.text = "\(post.comments)"
         
+        
+        likesRef.child(self.post.id).observeSingleEvent(of: .value) { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.liked.imageView?.image = UIImage(named: "heart")
+            } else {
+                self.liked.imageView?.image = UIImage(named: "heart.fill")
+            }
+        }
+        
         if img != nil {
             self.postImage.image = img
         } else {
@@ -70,19 +79,19 @@ class postCell: UITableViewCell {
                 }
             })
                         
-            likesRef.observeSingleEvent(of: .value) { (snapshot) in
-                if let _ = snapshot.value as? NSNull {
-                    self.liked.imageView?.image = UIImage(named: "heart")
-                } else {
-                    self.liked.imageView?.image = UIImage(named: "heart.fill")
-                }
-            }
+//            likesRef.observeSingleEvent(of: .value) { (snapshot) in
+//                if let _ = snapshot.value as? NSNull {
+//                    self.liked.imageView?.image = UIImage(named: "heart")
+//                } else {
+//                    self.liked.imageView?.image = UIImage(named: "heart.fill")
+//                }
+//            }
         }
         
     }
     
     @objc func likeTapped(sender: UIGestureRecognizer) {
-        likesRef.observeSingleEvent(of: .value) { (snapshot) in
+        likesRef.child(self.post.id).observeSingleEvent(of: .value) { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.liked.imageView?.image = UIImage(named: "heart.fill")
                 self.post.adjustLike(addLike: true)
