@@ -21,9 +21,19 @@ class postCell: UITableViewCell {
     
     var post: Post!
     
+    //REFLIKES
+    let likesRef = DataService.dataService.REF_CURRENT_USER.child("likes")
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.likeTapped))
+        tap.numberOfTapsRequired = 1
+        liked.addGestureRecognizer(tap)
+        liked.isUserInteractionEnabled = true
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,8 +55,8 @@ class postCell: UITableViewCell {
         if img != nil {
             self.postImage.image = img
         } else {
-            let ref = Storage.storage().reference(forURL: post.imageUrl)
-            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            let PostImageRef = Storage.storage().reference(forURL: post.imageUrl)
+            PostImageRef.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
                 if error != nil {
                     print("STORAGE: unable to download image")
                 } else {
@@ -59,6 +69,29 @@ class postCell: UITableViewCell {
                     }
                 }
             })
+                        
+            likesRef.observeSingleEvent(of: .value) { (snapshot) in
+                if let _ = snapshot.value as? NSNull {
+                    self.liked.imageView?.image = UIImage(named: "heart")
+                } else {
+                    self.liked.imageView?.image = UIImage(named: "heart.fill")
+                }
+            }
+        }
+        
+    }
+    
+    @objc func likeTapped(sender: UIGestureRecognizer) {
+        likesRef.observeSingleEvent(of: .value) { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.liked.imageView?.image = UIImage(named: "heart.fill")
+                self.post.adjustLike(addLike: true)
+                self.likesRef.child(self.post.id).setValue(true)
+            } else {
+                self.liked.imageView?.image = UIImage(named: "heart")
+                self.post.adjustLike(addLike: false)
+                self.likesRef.child(self.post.id).removeValue()
+            }
         }
         
     }

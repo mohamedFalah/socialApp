@@ -60,5 +60,15 @@ class Post {
         }
     }
     
+    func adjustLike(addLike: Bool) {
+        if addLike {
+            self._likes = self._likes! + 1
+        } else {
+            self._likes = self._likes! - 1
+        }
+        
+        DataService.dataService.REF_POSTS.child(id).child("likes").setValue(self._likes)
+    }
+    
     
 }

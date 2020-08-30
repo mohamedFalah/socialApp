@@ -44,6 +44,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         //create listener on posts childs
         ///.value -> Any data changes at a location or, recursively, at any child node.  FIRDataEventTypeValue
         DataService.dataService.REF_POSTS.observe(.value) { (snapshot) in
+            self.posts.removeAll()
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshot {
                     print("FIR: \(snap)")
@@ -91,12 +92,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? postCell {
             if let img = FeedVC.imgCache.object(forKey: post.imageUrl as NSString) {
                 cell.configureCell(post: post, img: img)
-                return cell
             } else {
                 cell.configureCell(post: post)
-                return cell
             }
-        }else {
+            return cell
+        } else {
             return postCell()
         }
     }
